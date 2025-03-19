@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  users-service:
+    build: ./users-service
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - forum-network
+
+  threads-service:
+    build: ./threads-service
+    ports:
+      - "3002:3000"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - forum-network
+
+  posts-service:
+    build: ./posts-service
+    ports:
+      - "3003:3000"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - forum-network
+
+networks:
+  forum-network:
+    driver: bridge
